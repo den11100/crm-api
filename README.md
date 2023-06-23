@@ -1,7 +1,6 @@
 ## Общее
-https://github.com/den11100/crm-api#readme
-Во всех запросах В header нужно передавать параметр `X-Api-Key`
-иначе будет ошибка `bad authorization` → 401
+* https://github.com/den11100/crm-api#readme
+* Во всех запросах В header нужно передавать параметр `X-Api-Key` иначе будет ошибка `bad authorization` → 401
 
 * msg - сообщение об ошибке
 * data - данные (может быть пустой массив)
@@ -37,10 +36,10 @@ https://github.com/den11100/crm-api#readme
 
 * `officeId` необязательный параметр
 
-`GET /api/v1/full-schedule/doctors` → 200, 400 вернёт всех активных врачей из всех офисов
-`GET /api/v1/full-schedule/doctors?officeId=1` → 200, 400 вернёт всех активных врачей в офисе Москва officeId = 1
+* `GET /api/v1/full-schedule/doctors` → 200, 400 вернёт всех активных врачей из всех офисов
+* `GET /api/v1/full-schedule/doctors?officeId=1` → 200, 400 вернёт всех активных врачей в офисе Москва officeId = 1
 
-
+#### Ответы
 200
 ```json
 {
@@ -92,8 +91,7 @@ https://github.com/den11100/crm-api#readme
 * `id` обязательный параметр
 
 `GET /api/v1/full-schedule/doctor?id=26` → 200, 400
-
-
+#### Ответы
 200
 ```json
 {
@@ -133,12 +131,12 @@ https://github.com/den11100/crm-api#readme
 
 
 
-### Получить ячейки расписания для одного доктора в параметрах передавать
+### Получить ячейки расписания для одного доктора
 * `doctorId` обязательный параметр
 
-* Если у доктора не стоит флаг в CRM доступен для API, то его расписание будет недоступно
-
 `GET /api/v1/full-schedule/cell-list-for-one?doctorId=31` → 200, 400
+
+#### Ответы
 
 200
 ```json
@@ -167,6 +165,21 @@ https://github.com/den11100/crm-api#readme
 }
 ```
 * free отвечает за занятость ячейки 0 - занято, 1 - свободно
+
+
+#### Если у доктора не стоит флаг в CRM доступен для API, то его расписание будет недоступно, вернётся пустой массив
+
+`GET /api/v1/full-schedule/cell-list-for-one?doctorId=32` → 200, 400
+
+#### Ответы
+
+200
+```json
+{
+    "msg": "",
+    "data": []
+}
+```
 
 400
 ```json
