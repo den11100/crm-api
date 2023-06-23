@@ -33,11 +33,13 @@ https://github.com/den11100/crm-api#readme
 
 
 
-### Получить список врачей в одном офисе в параметрах передавать
+### Получить список активных врачей
 
-* `officeId` обязательный параметр
+* `officeId` необязательный параметр
 
-`GET /api/v1/full-schedule/doctors?officeId=1` → 200, 400
+`GET /api/v1/full-schedule/doctors` → 200, 400 вернёт всех активных врачей из всех офисов
+`GET /api/v1/full-schedule/doctors?officeId=1` → 200, 400 вернёт всех активных врачей в офисе Москва officeId = 1
+
 
 200
 ```json
@@ -45,12 +47,22 @@ https://github.com/den11100/crm-api#readme
     "msg": "",
     "data": [
         {
+            "id": 26,
+            "fio": "Фамилия Имя Отчество",
+            "office_id": 17,
+            "city": "Челябинск",
+            "specialty_name": "Генетик",
+            "grid_pitch": 60,
+            "time_zone": "+05:00"
+        },
+        {
             "id": 91,
             "fio": "Фамилия Имя Отчество",
             "office_id": 1,
             "city": "Москва",          
             "specialty_name": "Генетик",
-            "grid_pitch": 60
+            "grid_pitch": 60,
+            "time_zone": "+03:00"
         },
         {
             "id": 92,
@@ -58,7 +70,8 @@ https://github.com/den11100/crm-api#readme
             "office_id": 1,
             "city": "Москва",            
             "specialty_name": "Невролог",
-            "grid_pitch": 60
+            "grid_pitch": 60,
+            "time_zone": "+03:00"
         }
     ]
 }
@@ -68,7 +81,51 @@ https://github.com/den11100/crm-api#readme
 400
 ```json
 {
-    "msg": "Не указан officeId",
+    "msg": "Текст ошибки",
+    "data": []
+}
+```
+
+
+### Получить информацию об одном враче
+
+* `id` обязательный параметр
+
+`GET /api/v1/full-schedule/doctor?id=26` → 200, 400
+
+
+200
+```json
+{
+    "msg": "",
+    "data": [
+        {
+            "id": 26,
+            "fio": "Фамилия Имя Отчество",
+            "office_id": 17,
+            "city": "Челябинск",
+            "specialty_name": "Генетик",
+            "grid_pitch": 60,
+            "time_zone": "+05:00"
+        }       
+    ]
+}
+```
+* grid_pitch - это время приёма в минутах
+
+#### Если у доктора неактивно взаимодействие по API, вернётся пустой массив
+200
+```json
+{
+    "msg": "",
+    "data": []
+}
+```
+
+400
+```json
+{
+    "msg": "Не указан параметр id",
     "data": []
 }
 ```
