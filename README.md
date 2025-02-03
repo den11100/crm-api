@@ -52,7 +52,8 @@
             "city": "Челябинск",
             "specialty_name": "Генетик",
             "grid_pitch": 60,
-            "time_zone": "+05:00"
+            "time_zone": "+05:00",
+            "have_free_slots": 1
         },
         {
             "id": 91,
@@ -61,7 +62,8 @@
             "city": "Москва",          
             "specialty_name": "Генетик",
             "grid_pitch": 60,
-            "time_zone": "+03:00"
+            "time_zone": "+03:00",
+            "have_free_slots": 0
         },
         {
             "id": 92,
@@ -70,7 +72,8 @@
             "city": "Москва",            
             "specialty_name": "Невролог",
             "grid_pitch": 60,
-            "time_zone": "+03:00"
+            "time_zone": "+03:00",
+            "have_free_slots": 0
         }
     ]
 }
