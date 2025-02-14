@@ -136,6 +136,11 @@
 
 ### Получить ячейки расписания для одного доктора
 * `doctorId` обязательный параметр
+```
+  type TYPE_OFFLINE = 1; // (очно)
+       TYPE_ONLINE_OFFICE = 2; // (онлайн офис) Физически в офисе в кабинете, но консультация онлайн
+       TYPE_ONLINE_REMOTE = 3; // онлайн дистанционно
+```
 
 `GET /api/v1/full-schedule/cell-list-for-one?doctorId=31` → 200, 400
 
@@ -150,19 +155,22 @@
             "dt": "2023-06-22",
             "time_start": "10:00:00",
             "time_end": "11:00:00",
-            "free": 0
+            "free": 0,
+            "type": 1
         },
         {
             "dt": "2023-06-22",
             "time_start": "11:00:00",
             "time_end": "12:00:00",
-            "free": 1
+            "free": 1,
+            "type": 1
         },
         {
             "dt": "2023-06-23",
             "time_start": "10:00:00",
             "time_end": "11:00:00",
-            "free": 1
+            "free": 1,
+            "type": 1
         }
     ]
 }
